@@ -2,6 +2,8 @@ import { NextResponse } from "next/server";
 import { pendingTwoFactorCodes } from "@/data/fakeDb";
 import { comparePassword } from "@/lib/password";
 import { findUserByEmail, getAdminUser } from "@/lib/auth";
+import { sendTwoFactorCodeEmail } from "@/lib/email";
+
 
 function generateTwoFactorCode() {
   return Math.floor(100000 + Math.random() * 900000).toString();
@@ -55,7 +57,8 @@ export async function POST(request: Request) {
       expiresAt: Date.now() + 5 * 60 * 1000,
     });
 
-    console.log(`2FA code for ${email}: ${code}`);
+        await sendTwoFactorCodeEmail(email, code);
+         console.log(`2FA code for ${email}: ${code}`);
 
     return NextResponse.json(
       {

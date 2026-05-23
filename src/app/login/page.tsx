@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 export default function LoginPage() {
   const router = useRouter();
 
-  const [email, setEmail] = useState("admin@example.com");
+  const [email, setEmail] = useState("yahya.yahya.1996y@gmail.com");
   const [password, setPassword] = useState("admin123");
 
   const [message, setMessage] = useState("");
@@ -36,7 +36,7 @@ export default function LoginPage() {
 
       localStorage.setItem("pendingEmail", email);
 
-      setMessage("Password correct. Check the 2FA code in the terminal.");
+      setMessage("Password correct. Check your email for the 2FA code.");
 
       setTimeout(() => {
         router.push("/verify-2fa");
