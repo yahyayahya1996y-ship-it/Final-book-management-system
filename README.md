@@ -1,36 +1,118 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Final Book Management System
 
-## Getting Started
+A final exam demo project built with **Next.js**, **TypeScript**, and **API Routes**.  
+The goal of this project is to demonstrate authentication, authorization, JWT, 2FA, Cloudflare human verification, role-based CRUD, environment variables, GitHub workflow, CI/CD, and deployment.
 
-First, run the development server:
+This project is not a full commercial management system. It is a focused demo project created to show the required backend and frontend concepts working together in one Next.js application.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Project Overview
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+This application is a simple **Book Management System** with two roles:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Admin**
+- **Student**
 
-## Learn More
+Both users can log in and access the same books page, but they have different permissions.
 
-To learn more about Next.js, take a look at the following resources:
+### Admin Can
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- View books
+- Add books
+- Edit books
+- Delete books
+- Logout
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Student Can
 
-## Deploy on Vercel
+- View books only
+- Logout
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Main Features
+
+- Next.js App Router
+- TypeScript
+- API Routes / Route Handlers
+- Fake backend using local arrays
+- JWT authentication
+- Password hashing using bcryptjs
+- Email/password login
+- OTP / 2FA verification after login
+- Cloudflare Turnstile human verification before login
+- HTTP-only cookie for JWT token
+- Role-based authorization
+- Admin CRUD for books
+- Student view-only access
+- Environment variables
+- GitHub branches: main and develop
+- CI/CD pipeline using GitHub Actions
+- Deployment using Vercel
+
+---
+
+## Technologies Used
+
+- Next.js
+- React
+- TypeScript
+- Tailwind CSS
+- JWT / jsonwebtoken
+- bcryptjs
+- Nodemailer
+- Cloudflare Turnstile
+- Git and GitHub
+- GitHub Actions
+- Vercel
+
+---
+
+## Project Structure
+
+```txt
+src/
+  app/
+    api/
+      auth/
+        signup/
+          route.ts
+        login/
+          route.ts
+        verify-2fa/
+          route.ts
+        logout/
+          route.ts
+        me/
+          route.ts
+      books/
+        route.ts
+        [id]/
+          route.ts
+
+    signup/
+      page.tsx
+    login/
+      page.tsx
+    verify-2fa/
+      page.tsx
+    dashboard/
+      page.tsx
+    books/
+      page.tsx
+    page.tsx
+
+  components/
+  data/
+    fakeDb.ts
+  lib/
+    auth.ts
+    currentUser.ts
+    email.ts
+    jwt.ts
+    password.ts
+    turnstile.ts
+  types/
+    book.ts
+    user.ts
